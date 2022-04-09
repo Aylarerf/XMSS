@@ -54,20 +54,20 @@ int main()
     randombytes(m, XMSS_MLEN);
 
     t1 = clock();
-    XMSS_KEYPAIR(pk, sk, oid);
+    xmss_keypair(pk, sk, oid);
     t2 = clock() - t1;
     printf("Key Generation Time for 1 iteration :: %lfs\n",(double)t2/CLOCKS_PER_SEC);
 
    
 
    t1 = clock();
-   XMSS_SIGN(sk, sm, &smlen, m, XMSS_MLEN);
+   xmss_sign(sk, sm, &smlen, m, XMSS_MLEN);
     t2 = clock() - t1;
     printf("signing Time for 1 iteration :: %lfs\n",(double)t2/CLOCKS_PER_SEC);
 
     
  t1 = clock();
- XMSS_SIGN_OPEN(mout, &mlen, sm, smlen, pk)
+ xmss_sign_open(mout, &mlen, sm, smlen, pk)
  t2 = clock() - t1;
  printf("signing Time for 1 iteration :: %lfs\n",(double)t2/CLOCKS_PER_SEC);
      
